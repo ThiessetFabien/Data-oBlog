@@ -1,7 +1,8 @@
 -- Revert oblog:01createdb from pg
-
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE post;
+
+DROP TABLE category;
 
 COMMIT;

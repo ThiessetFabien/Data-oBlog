@@ -20,6 +20,7 @@ package-lock.json
 #log
 **/*.log
 **/*.log.*
+/documentation
 
 #vscode
 .vs_code/
