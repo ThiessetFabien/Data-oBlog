@@ -8,7 +8,7 @@ const options = {
       name: 'BSD',
     },
   },
-  baseDir: '../../',
+  baseDir: './',
   filesPattern: './**/*.js',
   swaggerUIPath: '/api-docs',
   exposeSwaggerUI: true,

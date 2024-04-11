@@ -15,54 +15,16 @@ router.use((request, _, next) => {
 
 /**
  * @swagger
- * /api/post:
+ * /post:
  *   get:
- *     summary: Get all articles
- *     description: Retrieve all available articles.
- *     parameters:
- *       - in: query
- *         name: slug
- *         schema:
- *           type: string
- *         description: Slug of the article to search for.
+ *     summary: Retrieve a list of posts.
  *     responses:
  *       200:
- *         description: Successfully retrieved articles.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Post'
- *       400:
- *         description: Invalid request, check your parameters.
- *       500:
- *         description: An error occurred while retrieving articles.
+ *         description: Successful response with a list of posts.
  */
-
 router.get('/post', validate(getSchema, 'query'), withErrorHandler());
 
-router.get('/post', validate(getSchema, 'query'), withErrorHandler());
-
-/**
- * @swagger
- * /api/post/{id}:
- *   get:
- *     summary: Get a specific article by ID
- *     description: Retrieve an article by its ID.
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: The ID of the article to retrieve.
- *     responses:
- *       200:
- *         description: Success. Returns the requested article.
- *       404:
- *         description: Article not found.
- */
+router.get('/post', validate(postSchema, 'query'), withErrorHandler());
 
 router.post('/post/:id', validate(postSchema, 'query'), withErrorHandler(postArticle));
 
