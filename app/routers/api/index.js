@@ -1,16 +1,16 @@
-const express = require("express");
-const { postArticle } = require('../../controllers/api/');
+const express = require('express');
+const { postArticle } = require('../../controllers/api');
 const ApiError = require('../../errors/apiError');
-const withErrorHandler = require('../../errors/withErrorHandler.js');
-const logger = require('../../helpers/logger.js');
-const { get: getSchema, post: postSchema } = require('../../validation/article.schemas.js');
-const validate = require('../../validation/validator.js');
+const withErrorHandler = require('../../errors/withErrorHandler');
+const logger = require('../../helpers/logger');
+const { get: getSchema, post: postSchema } = require('../../validation/article.schemas');
+const validate = require('../../validation/validator');
 
 const router = express.Router();
 
 router.use((request, _, next) => {
-    logger.http(`${request.method} ${request.originalUrl}`);
-    next();
+  logger.http(`${request.method} ${request.originalUrl}`);
+  next();
 });
 
 /**
@@ -33,7 +33,7 @@ router.use((request, _, next) => {
  *         description: Article not found.
  */
 
-router.get('/post', validate(this.getSchema, 'query'), withErrorHandler())
+router.get('/post', validate(getSchema, 'query'), withErrorHandler());
 router.post('/post/:id', validate(postSchema, 'query'), withErrorHandler(postArticle));
 
 /**
@@ -46,7 +46,7 @@ router.post('/post/:id', validate(postSchema, 'query'), withErrorHandler(postArt
  */
 
 router.use((_, __, next) => {
-    next(new ApiError(404, 'Not Found', 'This resource does not exist'));
+  next(new ApiError(404, 'Not Found', 'This resource does not exist'));
 });
 
 module.exports = router;

@@ -1,11 +1,11 @@
 function withErrorHandler(controller) {
-    return (request, response, next) => {
+  return (request, response, next) => {
     try {
-        controller(request, response, next);
+      controller(request, response, next);
     } catch (error) {
-        next(error);
+      next(error);
     }
-    };
+  };
 }
 
 module.exports = withErrorHandler;
