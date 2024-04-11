@@ -6,7 +6,7 @@
 
 ## Squitch
     [] Sous dossier migrations
-    [] Regex en validation de données dans la BDD
+    [x] Regex en validation de données dans la BDD
 
 ## Environnement de développement
     [] architecture de cadex
