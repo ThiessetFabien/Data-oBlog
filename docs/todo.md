@@ -1,8 +1,8 @@
 # API O'blog
 
 ## Conception
-    [] MCD
-    [] Appliquer les règles de transformation
+    [x] MCD
+    [x] Appliquer les règles de transformation
 
 ## Squitch
     [] Sous dossier migrations
