@@ -15,6 +15,37 @@ router.use((request, _, next) => {
 
 /**
  * @swagger
+ * /api/post:
+ *   get:
+ *     summary: Get all articles
+ *     description: Retrieve all available articles.
+ *     parameters:
+ *       - in: query
+ *         name: slug
+ *         schema:
+ *           type: string
+ *         description: Slug of the article to search for.
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved articles.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Post'
+ *       400:
+ *         description: Invalid request, check your parameters.
+ *       500:
+ *         description: An error occurred while retrieving articles.
+ */
+
+router.get('/post', validate(getSchema, 'query'), withErrorHandler());
+
+router.get('/post', validate(getSchema, 'query'), withErrorHandler());
+
+/**
+ * @swagger
  * /api/post/{id}:
  *   get:
  *     summary: Get a specific article by ID
@@ -33,7 +64,6 @@ router.use((request, _, next) => {
  *         description: Article not found.
  */
 
-router.get('/post', validate(getSchema, 'query'), withErrorHandler());
 router.post('/post/:id', validate(postSchema, 'query'), withErrorHandler(postArticle));
 
 /**

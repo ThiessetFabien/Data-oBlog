@@ -8,7 +8,7 @@ const options = {
       name: 'BSD',
     },
   },
-  baseDir: './app/routers/api',
+  baseDir: '../../',
   filesPattern: './**/*.js',
   swaggerUIPath: '/api-docs',
   exposeSwaggerUI: true,
