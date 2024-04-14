@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Parkour spédata S01",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "doc": "docs",
     "tests": "tests"
@@ -20,8 +21,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-jsdoc-swagger": "^1.8.0",
+    "http": "^0.0.1-security",
     "joi": "^17.12.3",
     "pg": "^8.11.5",
+    "pug": "^3.0.2",
     "winston": "^3.13.0"
   },
   "devDependencies": {

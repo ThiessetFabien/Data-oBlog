@@ -1,9 +1,9 @@
-require('dotenv').config({path:'./.env.dev'});
+require('dotenv').config({ path: './.env.dev' });
 const debug = require('debug')('import:log');
-const { Client } = require('pg');
+import { Client } from 'pg';
 
-const categories = require('./categories.json');
-const posts = require('./posts.json');
+import { forEach } from './categories.json';
+import { forEach as _forEach } from './posts.json';
 
 async function emptyTables(client){
     await client.query('TRUNCATE TABLE category, post RESTART IDENTITY');
@@ -13,7 +13,7 @@ async function insertCategories(client){
 
     const categoryQuerries = [];
 
-    categories.forEach((category) => {
+    forEach((category) => {
         debug('Processing category: ', category.label);
         const query = client.query(
             `
@@ -39,7 +39,7 @@ async function insertCategories(client){
 async function insertPosts(client, categoryRows){
 
     const postQueries = [];
-    posts.forEach((post) => {
+    _forEach((post) => {
         debug('Processing post:', post.slug);
 
         const postCategory = categoryRows.find((category) => category.label === post.category);
